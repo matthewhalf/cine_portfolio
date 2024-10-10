@@ -2,26 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Effetto Grain potenziato */
+.grain {
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    right: -50%;
+    bottom: -150%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.3;  /* Aumentato da 0.15 a 0.3 */
+    animation: grain 6s steps(10) infinite;
+    pointer-events: none;
+    mix-blend-mode: multiply;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .grain-light {opacity: 0.1 !important;}
+  
+  .grain::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.8;
+    animation: grain 4s steps(8) infinite;
+    mix-blend-mode: difference;
   }
-}
+  
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    10% { transform: translate(-5%, -10%) scale(1); }
+    20% { transform: translate(-15%, 5%) scale(1); }
+    30% { transform: translate(7%, -25%) scale(1); }
+    40% { transform: translate(-5%, 25%) scale(1); }
+    50% { transform: translate(-15%, 10%) scale(1); }
+    60% { transform: translate(15%, 0%) scale(1); }
+    70% { transform: translate(0%, 15%) scale(1); }
+    80% { transform: translate(3%, 35%) scale(1); }
+    90% { transform: translate(-10%, 10%) scale(1); }
+  }
+  
+  /* Aggiunto un leggero effetto di flickering al testo */
+  @keyframes textFlicker {
+    0% { opacity: 1; }
+    92% { opacity: 0.8; }
+    93% { opacity: 1; }
+    94% { opacity:0.9; }
+    100% { opacity: 1; }
+  }
+  
+  /* Effetto di transizione per le citazioni */
+  .text-2xl {
+    transition: opacity 0.5s ease-in-out;
+    animation: textFlicker 4s infinite;
+  }
+  
+  .movie-info {
+    transition: opacity 0.5s ease-in-out;
+  }
