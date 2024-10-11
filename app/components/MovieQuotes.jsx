@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { movieQuotes } from '../data/movieQuotesData';
+import { motion } from "framer-motion"
 
 const MovieQuotes = () => {
   const [quote, setQuote] = useState(null);
@@ -28,12 +29,10 @@ const MovieQuotes = () => {
           </p>
         </div>
       </div>
-      <button 
-        onClick={getRandomQuote} 
-        className="mt-6 bg-film text-primary py-2 px-6 text-sm rounded-lg"
-      >
+      <motion.button  whileTap={{ scale: 0.9 }} onClick={getRandomQuote} 
+        className="mt-6 bg-film text-primary py-2 px-6 text-sm rounded-lg">
         Gimme a quote
-      </button>
+      </motion.button>
 
       <p className="text-primary my-20 text-center">
     hey im Matthew, a frontend developer with a passion for cinema  based in Italy
