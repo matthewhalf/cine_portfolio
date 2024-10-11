@@ -22,8 +22,8 @@ const MovieQuotes = () => {
       <div className="bg-primary w-[90%] m-auto rounded p-4 mt-8 text-film text-center relative overflow-hidden">
         <div className="grain"></div>
         <div className="relative z-10">
-          <p className="text-2xl mb-4 uppercase">"{quote.quote}"</p>
-          <p className="movie-info">
+          <p className="text-xl mb-4 uppercase">"{quote.quote}"</p>
+          <p className="text-sm">
             {quote.movie} ({quote.year})
           </p>
         </div>
@@ -34,6 +34,12 @@ const MovieQuotes = () => {
       >
         Gimme a quote
       </button>
+
+      <p className="text-primary my-20 text-center">
+    hey im Matthew, a frontend developer with a passion for cinema  based in Italy
+    </p>
+
+    <div className="h-[5px] w-[90%] bg-primary rounded-lg mt-4"></div>
     </>
   );
 };

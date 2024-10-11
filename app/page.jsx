@@ -12,12 +12,6 @@ export default function Home() {
 
     <MovieQuotes />
 
-    <p className="text-primary my-20 text-center">
-    hey im Matthew, a frontend developer with a passion for cinema  based in Italy
-    </p>
-
-    <div className="h-[5px] w-[90%] bg-primary rounded-lg mt-4"></div>
-
     <About />
 
     </div>
